@@ -15,10 +15,13 @@ console.log('<body>');
 console.log('<table>');
 
 (async() => {
-const browser = await puppeteer.launch();
+const browser = await puppeteer.launch({
+  executablePath: '/opt/google/chrome/chrome'
+});
 const page = await browser.newPage();
 for (let i = 0; i < amazonLinks.length; i++) {
-  await page.goto(amazonLinks[i], {waitUntil: 'networkidle2'});
+  const link = amazonLinks[i];
+  await page.goto(link, {waitUntil: 'networkidle2'});
   const items = await page.evaluate(() => {
     const items = [];
     [].forEach.call(document.querySelectorAll('[data-component-type="s-search-result"]'), item => {
@@ -34,6 +37,7 @@ for (let i = 0; i < amazonLinks.length; i++) {
     });
     return items;
   });
+  console.log(`<!-- Got ${items.length} items from ${link} -->`);
   for (let j = 0; j < items.length; j++) {
   	const item = items[j];
   	console.log('<tr>');
