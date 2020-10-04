@@ -14,25 +14,29 @@ console.log('</head>');
 console.log('<body>');
 console.log('<table>');
 
+for (let i = 0; i < amazonLinks.length; i++) {
 (async() => {
 const browser = await puppeteer.launch({
   executablePath: '/opt/google/chrome/chrome'
 });
 const page = await browser.newPage();
-for (let i = 0; i < amazonLinks.length; i++) {
   const link = amazonLinks[i];
   await page.goto(link, {waitUntil: 'networkidle2'});
+  //await page.waitForSelector('.a-price-whole', { timeout: 5000 });
   const items = await page.evaluate(() => {
     const items = [];
     [].forEach.call(document.querySelectorAll('[data-component-type="s-search-result"]'), item => {
-      const price = item.querySelector('.a-price-whole');
-      if (price) {
-        items.push({
-          asin: item.dataset.asin,
-          imageUrl: item.querySelector('img').src,
-          price: item.querySelector('.a-price-whole').childNodes[0].nodeValue + '.' + item.querySelector('.a-price-fraction').innerHTML,
-          name: item.querySelector('h2').querySelector('span').innerHTML
-        });
+      const priceEl = item.querySelector('.a-price-whole');
+      if (priceEl) {
+        const price = parseFloat(priceEl.childNodes[0].nodeValue + '.' + item.querySelector('.a-price-fraction').innerHTML);
+        if (price < 30) {
+          items.push({
+            asin: item.dataset.asin,
+            imageUrl: item.querySelector('img').src,
+            price: price,
+            name: item.querySelector('h2').querySelector('span').innerHTML
+          });
+        }
       }
     });
     return items;
@@ -52,10 +56,9 @@ for (let i = 0; i < amazonLinks.length; i++) {
   	console.log('</td>');
   	console.log('</tr>');
   }
-}
-console.log('</table>');
+/*console.log('</table>');
 console.log('</body>');
-console.log('</html>');
+console.log('</html>');*/
 await browser.close();
 })();
-
+}
