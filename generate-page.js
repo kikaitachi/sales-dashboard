@@ -34,7 +34,6 @@ for (let i = 0; i < amazonLinks.length; i++) {
     });
     return items;
   });
-  //console.log(items);
   for (let j = 0; j < items.length; j++) {
   	const item = items[j];
   	console.log('<tr>');
