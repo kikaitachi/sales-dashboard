@@ -1,0 +1,17 @@
+name: generate
+on:
+  schedule
+    - cron: '37 3 * * *'
+jobs:
+  generate:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v2
+      - name: Generate
+        run: ./generate.sh
+      - name: Commit
+        run: |
+          git config --global user.name 'Action'
+          git config --global user.email '61438920+kikaitachi@users.noreply.github.com'
+          git commit -am "Daily refresh"
+          git push
