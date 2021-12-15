@@ -1,6 +1,6 @@
 name: generate
 on:
-  schedule
+  schedule:
     - cron: '37 3 * * *'
 jobs:
   generate:
