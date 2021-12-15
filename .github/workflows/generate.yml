@@ -7,6 +7,10 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v2
+      - name: Install dependencies
+        run: |
+          sudo apt install nodejs
+          npm i puppeteer
       - name: Generate
         run: ./generate.sh
       - name: Commit
