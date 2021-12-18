@@ -12,7 +12,7 @@ const renderSections = (data) => {
             for (const item of brand.items) {
                 content += `<a class="item" href="https://www.amazon.co.uk/gp/product/${item.asin}?tag=wishinfinit09-21">`;
                 content += `<img src="${item.imageUrl}">`;
-                content += `<div>${item.name}</div>`;
+                content += `<br/><span>${item.name}</span><br/>`;
                 content += `from <b>£${item.price}</b>`;
                 content += '</a>';
             }

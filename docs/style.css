@@ -53,6 +53,7 @@ body {
 }
 
 .item {
+	flex-grow: 1;
     margin: 1rem;
     text-align: center;
 	color: black;
@@ -63,6 +64,6 @@ body {
 	height: 122px;
 }
 
-.item > div {
+.item > span {
 	border-bottom: 1px solid silver;
 }
