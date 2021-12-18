@@ -10,7 +10,7 @@ const renderSections = (data) => {
             content += '<br/>';
             content += item.name;
             content += '<br/>';
-            content += "£";
+            content += "from £";
             content += item.price;
             content += '</div>';
         }
