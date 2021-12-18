@@ -10,17 +10,14 @@ body {
 
 .header {
 	background-color: rgba(0, 0, 0, 0.8);
-	background-repeat: no-repeat;
-	background-position: center;
-	background-size: cover;
 	position: fixed;
 	top: 0;
 	left: 0;
 	right: 0;
 	line-height: 70px;
 	height: 70px;
-	box-shadow: 0px 0px 8px 0px rgba(0, 0, 0, 0.5);
 	z-index: 1;
+	user-select: none;
 }
 
 .logo {
@@ -34,6 +31,28 @@ body {
 	vertical-align: middle;
 	text-shadow: 1px 1px 3px rgba(0, 0, 0, 0.7);
 	margin-left: 20px;
+}
+
+#filters {
+	color: silver;
+	font-size: 18px;
+	margin-left: 170px;
+	text-overflow: ellipsis;
+}
+
+#filterList {
+	color: white;
+	position: fixed;
+	line-height: normal;
+	top: 70px;
+	left: 160px;
+	display: none;
+	background-color: rgba(0, 0, 0, 0.8);
+	padding: 0.5rem;
+}
+
+#activeFilters {
+	margin-left: 0.5rem;
 }
 
 #content {
@@ -66,4 +85,19 @@ body {
 
 .item > span {
 	border-bottom: 1px solid silver;
+}
+
+.arrow {
+	border: solid white;
+	border-width: 0 5px 5px 0;
+	display: inline-block;
+	padding: 5px;
+}
+
+.up {
+	transform: rotate(-135deg);
+}
+
+.down {
+	transform: rotate(45deg);
 }

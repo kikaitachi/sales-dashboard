@@ -1,29 +1,93 @@
-const selectedCategory = 'Shoes (women)';
+const selectedCategories = new Set();
 
-const renderSections = (data) => {
-    const contentEl = document.getElementById("content");
+var filtersOpen = false;
+var batches = [];
+
+const toggleSelectFilters = () => {
+    const filterArrowEl = document.getElementById('filterArrow');
+    const filterListEl = document.getElementById('filterList');
+    if (filtersOpen) {
+        filterArrowEl.classList.remove('up');
+        filterArrowEl.classList.add('down');
+        filterListEl.style.display = 'none';
+    } else {
+        filterArrowEl.classList.add('up');
+        filterArrowEl.classList.remove('down');
+        filterListEl.style.display = 'inline-block';
+    }
+    filtersOpen = !filtersOpen;
+}
+
+const updateCategories = () => {
+    const categories = Array.from(selectedCategories);
+    categories.sort();
+    document.getElementById('activeFilters').innerHTML = categories.join(', ');
+
+    const contentEl = document.getElementById('content');
     var content = "";
-    for (const batch of data) {
+    for (const batch of batches) {
         const items = batch.items;
         if (items.length != 0) {
-            //if (brand.category == selectedCategory) {
-            content += `<div class="section">${batch.brand}</div>`;
-            content += '<div class="sectionContent">';
-            for (const item of batch.items) {
-                content += `<a class="item" href="https://www.amazon.co.uk/gp/product/${item.asin}?tag=wishinfinit09-21">`;
-                content += `<img src="${item.imageUrl}">`;
-                content += `<br/><span>${item.name}</span><br/>`;
-                content += `from <b>£${item.price}</b>`;
-                content += '</a>';
+            if (selectedCategories.has(batch.category)) {
+                content += `<div class="section">${batch.brand} (${batch.category})</div>`;
+                content += '<div class="sectionContent">';
+                for (const item of batch.items) {
+                    content += `<a class="item" href="https://www.amazon.co.uk/gp/product/${item.asin}?tag=wishinfinit09-21">`;
+                    content += `<img src="${item.imageUrl}">`;
+                    content += `<br/><span>${item.name}</span><br/>`;
+                    content += `from <b>£${item.price}</b>`;
+                    content += '</a>';
+                }
+                content += '</div>';
             }
-            content += '</div>';
         }
     }
     contentEl.innerHTML = content;
 }
 
+const toggleCategory = (el, category) => {
+    return () => {
+        if (selectedCategories.has(category)) {
+            selectedCategories.delete(category);
+            el.innerHTML = '☐ ' + category;
+        } else {
+            selectedCategories.add(category);
+            el.innerHTML = '☑ ' + category;
+        }
+        updateCategories();
+    };
+}
+
+const render = (data) => {
+    batches = data;
+
+    selectedCategories.add("Baby shoes");
+    selectedCategories.add("Men's shoes");
+    selectedCategories.add("Women's shoes");
+
+    const categorySet = new Set();
+    for (const batch of batches) {
+        categorySet.add(batch.category);
+    }
+    const categories = Array.from(categorySet);
+    categories.sort();
+
+    const filterListEl = document.getElementById('filterList');
+    for (const category of categories) {
+        const categoryEl = document.createElement('div');
+        categoryEl.innerHTML = (selectedCategories.has(category) ? '☑' : '☐') + " " + category;
+        categoryEl.onclick = toggleCategory(categoryEl, category);
+        filterListEl.appendChild(categoryEl);
+    }
+
+    const filtersEl = document.getElementById('filters');
+    filtersEl.onclick = toggleSelectFilters;
+
+    updateCategories();
+}
+
 const init = () => {
     fetch("shoes.json")
         .then(response => response.json())
-        .then(data => renderSections(data));
+        .then(data => render(data));
 }
