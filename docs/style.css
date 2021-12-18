@@ -55,5 +55,14 @@ body {
 .item {
     margin: 1rem;
     text-align: center;
+	color: black;
+	text-decoration: none;
 }
 
+.item > img {
+	height: 122px;
+}
+
+.item > div {
+	border-bottom: 1px solid silver;
+}
