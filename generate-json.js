@@ -16,8 +16,7 @@ const amazonLinks = [
 	}, {
 		"name": "Clarks",
 		"url": "https://www.amazon.co.uk/s?k=clarks&i=shoes&rh=n%3A1769609031%2Cp_89%3AClarks%7CClarks+Originals%2Cp_36%3A-2500&s=price-asc-rank&dc&qid=1619343544&rnid=197571031&ref=sr_nr_p_36_5",
-	}, 
-	{
+	}, {
 		"name": "Geox",
 		"url": "https://www.amazon.co.uk/s?k=geox&i=shoes&rh=n%3A355005011%2Cn%3A1769609031%2Cp_89%3AGeox%2Cp_36%3A197572031&s=price-asc-rank&dc&qid=1619343598&rnid=355005011&ref=sr_nr_n_1"
 	},
