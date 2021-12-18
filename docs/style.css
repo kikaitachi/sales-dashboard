@@ -87,6 +87,13 @@ body {
 	border-bottom: 1px solid silver;
 }
 
+.item > div {
+	position: absolute;
+	color: white;
+	border-radius: 2rem;
+	padding: 0 0.5rem;
+}
+
 .arrow {
 	border: solid white;
 	border-width: 0 5px 5px 0;
