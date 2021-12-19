@@ -38,7 +38,7 @@ body {
 	font-size: 18px;
 	position: fixed;
 	top: 0px;
-	bottom: 70px;
+	height: 70px;
 	left: 165px;
 	right: 0;
 	white-space: nowrap;
@@ -76,6 +76,7 @@ body {
 .sectionContent {
     display: flex;
     flex-wrap: wrap;
+	justify-content: space-around;
 }
 
 .item {
@@ -84,6 +85,16 @@ body {
     text-align: center;
 	color: black;
 	text-decoration: none;
+}
+
+.emptyItem {
+	flex-grow: 1000;
+}
+
+@media only screen and (max-width: 768px) {
+	.emptyItem {
+		display: none;
+	}
 }
 
 .item > img {

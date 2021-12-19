@@ -48,6 +48,7 @@ const updateCategories = () => {
                     content += `from <b>£${item.price}</b>`;
                     content += '</a>';
                 }
+                content += '<div class="item emptyItem"></div>';
                 content += '</div>';
             }
         }
