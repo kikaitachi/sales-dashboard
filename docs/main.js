@@ -32,7 +32,7 @@ const updateCategories = () => {
                 content += `<div class="section">${batch.brand} (${batch.category})</div>`;
                 content += '<div class="sectionContent">';
                 for (const item of batch.items) {
-                    content += `<a class="item" href="https://www.amazon.co.uk/gp/product/${item.asin}?tag=wishinfinit09-21">`;
+                    content += `<a class="item" href="https://www.amazon.co.uk/gp/product/${item.asin}?tag=wishinfinit09-21" target="_blank">`;
                     if (prevAsinToPrice.has(item.asin)) {
                         const oldPrice = prevAsinToPrice.get(item.asin)
                         if (oldPrice < item.price) {
