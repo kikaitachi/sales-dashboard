@@ -19,6 +19,14 @@ const amazonLinks = [
 		url: "https://www.amazon.co.uk/s?k=skechers&i=shoes&rh=n:355005011,n:1769609031,n:1769738031,p_89:Skechers&s=price-asc-rank&dc&qid=1639845519&rnid=355005011&ref=sr_nr_n_2",
 	}, {
 		brand: "Skechers",
+		category: "Girls' Shoes",
+		url: "https://www.amazon.co.uk/s?k=skechers&i=shoes&rh=n:355005011,n:1769609031,n:1769676031,p_89:Skechers&s=price-asc-rank&dc&qid=1639942924&rnid=355005011&ref=sr_nr_n_3",
+	}, {
+		brand: "Skechers",
+		category: "Boys' Shoes",
+		url: "https://www.amazon.co.uk/s?k=skechers&i=shoes&rh=n:355005011,n:1769609031,n:1769617031,p_89:Skechers&s=price-asc-rank&dc&qid=1639942993&rnid=355005011&ref=sr_nr_n_4",
+	}, {
+		brand: "Skechers",
 		category: "Baby shoes",
 		url: "https://www.amazon.co.uk/s?k=skechers&i=shoes&rh=n:355005011,n:1769609031,n:1769610031,p_89:Skechers&s=price-asc-rank&dc&qid=1639845558&rnid=355005011&ref=sr_nr_n_5",
 	}, {

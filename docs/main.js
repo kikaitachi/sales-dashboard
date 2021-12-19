@@ -77,13 +77,10 @@ const render = (prevData, data) => {
         }
     }
 
-    selectedCategories.add("Baby shoes");
-    selectedCategories.add("Men's shoes");
-    selectedCategories.add("Women's shoes");
-
     const categorySet = new Set();
     for (const batch of batches) {
         categorySet.add(batch.category);
+        selectedCategories.add(batch.category);
     }
     const categories = Array.from(categorySet);
     categories.sort();
