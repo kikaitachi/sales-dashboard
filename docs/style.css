@@ -36,8 +36,15 @@ body {
 #filters {
 	color: silver;
 	font-size: 18px;
-	margin-left: 170px;
+	position: fixed;
+	top: 0px;
+	bottom: 70px;
+	left: 165px;
+	right: 0;
+	white-space: nowrap;
+	overflow: hidden;
 	text-overflow: ellipsis;
+	padding-left: 5px;
 }
 
 #filterList {
@@ -52,7 +59,7 @@ body {
 }
 
 #activeFilters {
-	margin-left: 0.5rem;
+	margin-left: 10px;
 }
 
 #content {
