@@ -71,14 +71,12 @@ for (const link of amazonLinks) {
 				const priceEl = item.querySelector('.a-price-whole');
 				if (priceEl) {
 					const price = parseFloat(priceEl.childNodes[0].nodeValue + '.' + item.querySelector('.a-price-fraction').innerHTML);
-					if (price < 30) {
-						items.push({
-							asin: item.dataset.asin,
-							imageUrl: item.querySelector('img').src,
-							price: price,
-							name: item.querySelector('h2').querySelector('span').innerHTML
-						});
-					}
+					items.push({
+						asin: item.dataset.asin,
+						imageUrl: item.querySelector('img').src,
+						price: price,
+						name: item.querySelector('h2').querySelector('span').innerHTML
+					});
 				}
 			});
 			return items;
