@@ -92,6 +92,8 @@ for (const link of amazonLinks) {
 
 		await browser.close();
 
+		items.sort((a, b) => a.price - b.price);
+
 		return {
 			brand: link.brand,
 			category: link.category,
