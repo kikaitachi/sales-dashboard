@@ -72,7 +72,7 @@ for (const link of amazonLinks) {
 			executablePath: '/opt/google/chrome/chrome'
 		});
 		const page = await browser.newPage();
-		await page.goto(link.url, {waitUntil: 'networkidle2'});
+		await page.goto(link.url, {waitUntil: 'networkidle0'});
 		const items = await page.evaluate(() => {
 			const items = [];
 			[].forEach.call(document.querySelectorAll('[data-component-type="s-search-result"]'), item => {
