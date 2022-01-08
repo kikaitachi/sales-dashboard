@@ -44,7 +44,7 @@ const updateCategories = () => {
                         content += '<div style="background-color: rgba(0, 100, 100, 0.5)">new today</div>';
                     }
                     content += `<img src="${item.imageUrl}">`;
-                    content += `<br/><span>${item.name}</span><br/>`;
+                    content += `<span>${item.name}</span>`;
                     content += `from <b>£${item.price}</b>`;
                     content += '</a>';
                 }

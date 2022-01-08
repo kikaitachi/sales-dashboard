@@ -103,6 +103,8 @@ body {
 
 .item > span {
 	border-bottom: 1px solid silver;
+	display: table;
+	margin: auto;
 }
 
 .item > div {
