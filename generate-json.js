@@ -2,6 +2,14 @@ const puppeteer = require('puppeteer');
 
 const amazonLinks = [
 	{
+		brand: "Adidas",
+		category: "Sport shoes",
+		url: "https://www.amazon.co.uk/s?k=adidas+shoes&i=shoes&bbn=27182251031&rh=n%3A1918531031%2Cp_89%3AAdidas%7Cadidas%7Cadidas+Originals%2Cp_36%3A-3500&s=price-asc-rank&dc&qid=1669229562&rnid=301350031&ref=sr_nr_p_36_5",
+	}, {
+		brand: "Nike",
+		category: "Sport shoes",
+		url: "https://www.amazon.co.uk/s?k=nike+shoes&i=fashion&rh=n%3A11961407031%2Cp_89%3ANIKE%2Cp_36%3A-3500&s=price-asc-rank&dc&qid=1669229656&qid=1669229656&rnid=197571031&ref=sr_st_price-asc-rank&ds=v1%3AE8TK5UGdlkQcQQISsENBAzP0pIE6DdWWcdejt%2BIVNK4",
+	}, {
 		brand: "Hotter",
 		category: "Women's shoes",
 		url: "https://www.amazon.co.uk/s?k=hotter shoes&i=shoes&rh=n:1769798031,p_89:Hotter,p_n_size_browse-vebin:1919984031|1919985031|1919986031|1919987031|1919988031|1919989031|1919990031&s=price-asc-rank&dc&qid=1601812569&rnid=1918531031&ref=sr_nr_p_n_size_browse-vebin_1",
@@ -79,12 +87,14 @@ for (const link of amazonLinks) {
 				const priceEl = item.querySelector('.a-price-whole');
 				if (priceEl) {
 					const price = parseFloat(priceEl.childNodes[0].nodeValue + '.' + item.querySelector('.a-price-fraction').innerHTML);
-					items.push({
-						asin: item.dataset.asin,
-						imageUrl: item.querySelector('img').src,
-						price: price,
-						name: item.querySelector('h2').querySelector('span').innerHTML
-					});
+					if (price <= 35) {
+						items.push({
+							asin: item.dataset.asin,
+							imageUrl: item.querySelector('img').src,
+							price: price,
+							name: item.querySelector('h2').querySelector('span').innerHTML
+						});
+					}
 				}
 			});
 			return items;
